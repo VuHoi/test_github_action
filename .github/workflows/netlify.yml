@@ -26,10 +26,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Clone the repoitory
-        uses: actions/checkout@v2
-        with:
-          ref: website-build
+      # - name: Clone the repoitory
+      #   uses: actions/checkout@v2
+      #   with:
+      #     ref: website-build
 
       - name: Configure Git
         run: |
