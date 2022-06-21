@@ -53,5 +53,5 @@ jobs:
           if [ $(git status --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
             git add -f out
             git commit -m "gh-actions deployed a new website build"
-            git push --force https://VuHoi:test_github_action.git HEAD:website-build
+            git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
           fi
