@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
@@ -39,13 +39,13 @@ jobs:
       - name: Download website build
         uses: actions/download-artifact@v1
         with:
-          name: public
-          path: public
+          name: build
+          path: build
 
       - name: Commit and Push
         run: |
           if [ $(git status --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
-            git add -f public
+            git add -f build
             git commit -m "gh-actions deployed a new website build"
             git push --force https://VuHoi:$@github.com/test_github_action.git HEAD:website-build
           fi
