@@ -37,7 +37,7 @@ jobs:
         with:
           ref: website-build
       - name: work around permission issue
-        run: git config --global --add safe.directory /github/test_github_action
+        run: git config --global --add safe.directory /test_github_action
       - name: Configure Git
         run: |
           git config --global user.email toilahoi007@gmail.com
