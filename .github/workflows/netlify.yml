@@ -61,7 +61,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: HEAD:website-build
+          branch: website-build
           github_token: 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
           force: true
 
