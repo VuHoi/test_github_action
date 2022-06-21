@@ -59,7 +59,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.5.0
         with:
-          branch: website-build
+          branch: HEAD:website-build
           github_token: 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
 
             # git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
