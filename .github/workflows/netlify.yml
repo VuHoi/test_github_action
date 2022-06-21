@@ -63,5 +63,6 @@ jobs:
         with:
           branch: HEAD:website-build
           github_token: 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
+          force: true
 
             # git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
