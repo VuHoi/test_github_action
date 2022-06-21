@@ -1,0 +1,68 @@
+name: Build
+
+on:
+  push:
+    branches:
+      [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: out
+          path: out
+
+  commit-build:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repoitory
+        uses: actions/checkout@v2
+        with:
+          ref: website-build
+      
+      - name: Configure Git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: work around permission issue
+        run: git config --global --add safe.directory test_github_action
+
+      - name: Download website build
+        uses: actions/download-artifact@v1
+        with:
+          name: out
+          path: out
+
+      - name: Commit and Push
+        run: |
+          if [ $(git status --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
+            git add -f out
+            git commit -a -m 'Automated dotnet-format update
+            Co-authored-by: ${{ github.event.comment.user.login }} <${{ github.event.comment.user.id }}+${{ github.event.comment.user.login }}@users.noreply.github.com>'
+          fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: website-build
+          github_token: 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
+          force: true
+
+            # git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
