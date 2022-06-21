@@ -54,10 +54,12 @@ jobs:
           if [ $(git status --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
             git add -f out
             git commit -m "gh-actions deployed a new website build"
-            git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
+            Co-authored-by: ${{ github.event.comment.user.login }} <${{ github.event.comment.user.id }}+${{ github.event.comment.user.login }}@users.noreply.github.com>'
           fi
       - name: Push changes
         uses: ad-m/github-push-action@v0.5.0
         with:
           branch: website-build
           github_token: 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
+
+            # git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
