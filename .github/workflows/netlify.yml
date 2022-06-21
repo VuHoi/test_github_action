@@ -36,7 +36,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: website-build
-          persist-credentials: false
       
       - name: Configure Git
         run: |
