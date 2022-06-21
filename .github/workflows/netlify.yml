@@ -43,7 +43,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
 
       - name: work around permission issue
-        run: git config --global --add safe.directory '*'
+        run: git config --global --add safe.directory test_github_action
 
       - name: Download website build
         uses: actions/download-artifact@v1
@@ -59,7 +59,7 @@ jobs:
             Co-authored-by: ${{ github.event.comment.user.login }} <${{ github.event.comment.user.id }}+${{ github.event.comment.user.login }}@users.noreply.github.com>'
           fi
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.5.0
         with:
           branch: HEAD:website-build
           github_token: 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
