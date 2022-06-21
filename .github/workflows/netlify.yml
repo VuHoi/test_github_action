@@ -61,7 +61,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           branch: website-build
-          github_token: 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
+          github_token: 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
           force: true
 
             # git push --force https://github.com/VuHoi/test_github_action.git HEAD:website-build
