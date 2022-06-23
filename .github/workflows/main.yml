@@ -43,3 +43,5 @@ jobs:
       
       - name: deploy on netlify
         run: netlify deploy --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
