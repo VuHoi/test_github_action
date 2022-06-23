@@ -41,9 +41,4 @@ jobs:
       # Deploy to Netlify with a personalized message
       - name: 🚀 Deploy to Netlify
         id: deploy-netlify
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir .next 
-        env:
-          NETLIFY_AUTH_TOKEN: YYx95UrIGiLkRb7NPMAaUqkXdRaKYWgdCJZKZnIXa4c
-          NETLIFY_SITE_ID: b874cb0b-392e-4abe-966e-a1fdb8927772
+        run: curl -X POST -d '{}' ${{ secrets.NETLIFY_HOOK }}
