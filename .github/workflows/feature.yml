@@ -3,7 +3,7 @@ name: Main workflow
 on:
   push:
     branches:
-      - main
+      - 'feature/*'
 
 jobs:
   build-and-deploy:
@@ -43,7 +43,7 @@ jobs:
         id: deploy-netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir out --prod
+          args: deploy --dir out 
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
