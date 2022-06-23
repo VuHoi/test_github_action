@@ -41,4 +41,5 @@ jobs:
       # Deploy to Netlify with a personalized message
       
       
-      - name: netlify deploy --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: deploy on netlify
+        run: netlify deploy --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
