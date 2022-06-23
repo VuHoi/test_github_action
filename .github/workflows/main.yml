@@ -45,5 +45,5 @@ jobs:
         with:
           args: deploy --dir .next 
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: YYx95UrIGiLkRb7NPMAaUqkXdRaKYWgdCJZKZnIXa4c
+          NETLIFY_SITE_ID: b874cb0b-392e-4abe-966e-a1fdb8927772
